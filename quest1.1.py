@@ -11,18 +11,20 @@ def read_file(input_file):
     with open(input_file) as f:
         sum = 0
         for i in f.read().split(','):
-            i1 = pow(int(i), 2)
-            i2 = pow(int(i)-2, 2)
-            print("%d - %d" % (i1, i2))
+            i1 = int(i)
+            i2 = int(i)-2
+            print("Side: %d - %d" % (i1, i2))
             s = math.sqrt(float(i1))
             s2 = math.sqrt(float(i1)-2)
             print("%f - %f" % (s, s2))
             term = s/int(s)
             print("----------------------------------")
             if(term != 1):
+                while(math.ceil(s) - 2 <= 0):
+                    s += 1
                 print("Number %s is not a square" % i)
                 print("Closest square above: %d | Its number of cells: %d" % (math.ceil(s), pow(math.ceil(s), 2)))
-                sum += (pow(math.ceil(s), 2) - int(i))
+                sum += (pow(math.ceil(s), 2) - i1 - i2)
                 print("Current sum: %d" % sum)
                 '''
                 clos_square = pow(clos_square_side, 2)
